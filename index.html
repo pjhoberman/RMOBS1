@@ -3,12 +3,16 @@
 	<head>
 		<link rel="stylesheet" href="css/supersized.css" type="text/css" media="screen" />
 		<link rel="stylesheet" href="theme/supersized.shutter.css" type="text/css" media="screen" />
+		<link rel="stylesheet" href="css/tabs.css" type="text/css" media="screen" />
 		
-		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+<!-- 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script> -->
+        <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 		<script type="text/javascript" src="js/jquery.easing.min.js"></script>
 		
+		<script type="text/javascript" src="js/tabs.js"></script>
 		<script type="text/javascript" src="js/supersized.3.2.7.min.js"></script>
 		<script type="text/javascript" src="theme/supersized.shutter.min.js"></script>
+		
 		
 		
 		<script type="text/javascript">
@@ -76,14 +80,118 @@
 					mouse_scrub				:	0
 					
 				});
+				
+				// show / hide info
+				$('#hide_content').click(function(){
+				    $('#content').slideUp("slow", function(){
+				        $('#show_content').show();
+				    });
+				});
+				
+				$('#show_content').click(function(){
+				    $(this).hide();
+				    $('#content').slideDown("slow");
+				});
+				
 		    });
 		    
 		</script>
+        
+        <style type="text/css">
+            #content {
+                height: 400px;
+                width: 600px;
+                margin: 100px auto;
+                padding: 15px;
+                overflow: hidden;
+                position: relative;
+                }
+            
+            #content, #show_content div {
+                background-color: rgba(255,255,255,.5);
+                border: 1px solid black;
+                }
 
+            #logo {
+                text-align: center;
+                }
+            
+            #logo img {
+                width: 400px;
+                }
+                
+            p {
+                margin-bottom: 20px;
+                }
+                
+            #hide_content {
+                position: absolute;
+                right: 10px;
+                top: 0;
+                cursor: pointer;
+                }
+            
+            #show_content {
+                display: none;
+                width: 600px;
+                margin: 0 auto;
+                cursor: pointer;
+                }
+            
+            #show_content div {
+                height: 20px;
+                width: 20px;
+                float: right;
+                text-align: center;
+                margin-top: 3px;
+                }
+            
+            #tabs li a, .tabs-content p{
+                background-color: rgba(255,255,255,.7);
+                }
+            
+            .tabs-content p{
+                
+                padding: 5px;
+                }
+            
+        </style>
 	</head>
 	
 	<body>
-	
+	   <div id="show_content"><div>+</div></div>
+	   <div id="content">
+            <div id="hide_content">-</div>
+            
+            <p id="logo">
+                <img src="img/RMOBS_horz_black_150dpi.png" alt="Outward Bound Rocky Mountain" />
+            </p>
+            
+            <ul class="tabs">
+                <li><a href="#one" class="active">One</a></li>
+                <li><a href="#two">Two</a></li>
+                <li><a href="#three">Three</a></li>
+            </ul>
+            
+            <ul class="tabs-content">
+                <li id="one" class="active">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sollicitudin, purus nec gravida tincidunt, diam leo pretium ligula, id placerat nunc dolor in orci. Maecenas porta aliquet convallis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer diam nisl, molestie a ornare ac, ultricies et mi. Sed arcu massa, sollicitudin vel accumsan et, feugiat ut ipsum. Donec diam nunc, volutpat eget condimentum in, feugiat vel nibh. Vestibulum fermentum, odio in auctor tincidunt, metus massa malesuada massa, sit amet cursus tellus lorem vel lorem. Suspendisse at porta nunc. Morbi nec egestas est. Maecenas porttitor nibh et orci tristique hendrerit. Praesent tortor ante, semper id commodo vitae, convallis vel sem. Donec congue diam vitae leo dictum euismod. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque ac augue ipsum.</p>
+
+                </li>
+                
+                <li id="two">
+                    <p>Sed sagittis hendrerit rhoncus. Nulla velit risus, tincidunt dignissim placerat ac, mollis vitae velit. Proin accumsan leo ut sem venenatis vitae malesuada eros molestie. Integer fringilla pulvinar leo, nec pellentesque odio auctor eu. Donec elementum pretium metus, eu vestibulum dui dapibus a. Donec accumsan tellus ut magna bibendum porta. Praesent dapibus ultricies porttitor. Sed adipiscing scelerisque mattis. Fusce luctus iaculis neque, non pulvinar orci lacinia et. Vestibulum vel diam nulla. Fusce porttitor cursus pharetra. Nunc congue mauris non diam eleifend ac gravida dui elementum. Fusce dolor lectus, elementum a congue eu, eleifend eu eros. Nullam pretium libero justo.</p>
+                </li>
+                
+                <li id="three">
+                    <p>Pellentesque euismod nulla blandit augue porttitor id hendrerit orci suscipit. Quisque fermentum suscipit rhoncus. Sed ac leo ac augue cursus varius non eu arcu. Curabitur dui eros, mattis in tristique et, ultricies eu ligula. In eget nulla odio, in lobortis eros. Pellentesque interdum erat nec diam hendrerit cursus. Vivamus molestie lorem et erat convallis posuere. Praesent luctus dictum ultricies. Pellentesque fermentum, tellus nec gravida auctor, tortor dolor tincidunt nisl, vitae adipiscing erat ipsum vitae lectus.</p>
+
+                </li>
+            </ul>
+            
+            
+	   </div>
+	   
     	<!--Thumbnail Navigation-->
     	<div id="prevthumb"></div>
     	<div id="nextthumb"></div>
